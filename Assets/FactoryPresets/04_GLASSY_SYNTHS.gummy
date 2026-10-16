@@ -1,0 +1,36 @@
+<GUMMY_STATE schemaVersion="1" presetIndex="4" modified="0">
+  <PARAM id="input" value="0.0" />
+  <PARAM id="output" value="0.0" />
+  <PARAM id="mix" value="100.0" />
+  <PARAM id="bypass" value="0.0" />
+  <PARAM id="quality" value="1.0" />
+  <PARAM id="transientOn" value="1.0" />
+  <PARAM id="attack" value="0.0" />
+  <PARAM id="sustain" value="0.0" />
+  <PARAM id="compOn" value="1.0" />
+  <PARAM id="threshold" value="0.0" />
+  <PARAM id="ratio" value="1.0" />
+  <PARAM id="compAttack" value="10.0" />
+  <PARAM id="release" value="150.0" />
+  <PARAM id="makeup" value="0.0" />
+  <PARAM id="autoRelease" value="1.0" />
+  <PARAM id="compMix" value="100.0" />
+  <PARAM id="compType" value="0.0" />
+  <PARAM id="colorOn" value="1.0" />
+  <PARAM id="colorDrive" value="10.0" />
+  <PARAM id="colorMix" value="100.0" />
+  <PARAM id="colorType" value="2.0" />
+  <PARAM id="toneOn" value="1.0" />
+  <PARAM id="body" value="0.0" />
+  <PARAM id="presence" value="8.0" />
+  <PARAM id="air" value="26.0" />
+  <PARAM id="smoothOn" value="1.0" />
+  <PARAM id="smooth" value="0.0" />
+  <PARAM id="motionOn" value="1.0" />
+  <PARAM id="motionAmount" value="26.0" />
+  <PARAM id="motionType" value="0.0" />
+  <PARAM id="clipOn" value="0.0" />
+  <PARAM id="clipDrive" value="0.0" />
+  <PARAM id="ceiling" value="0.0" />
+  <PARAM id="clipMode" value="0.0" />
+</GUMMY_STATE>

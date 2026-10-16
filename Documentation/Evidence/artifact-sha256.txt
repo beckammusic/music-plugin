@@ -1,0 +1,2 @@
+dcf6aa5f94c6fc2df9c6277c547005d89fb4e609cf244d9f561729d1963218c9  /workspace/work/build-linux/GUMMY_artefacts/Release/VST3/GUMMY.vst3/Contents/x86_64-linux/GUMMY.so
+9fdfe6e614fd9ba0690aac73abb6b3c2fbbc9207ef24e981f372b922f0130888  /workspace/work/build-linux/GUMMY_artefacts/Release/Standalone/GUMMY

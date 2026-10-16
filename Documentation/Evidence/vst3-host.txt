@@ -1,0 +1,5 @@
+PASS VST3 discovery: GUMMY / GUMMY Audio / 1.0.0
+INFO VST3 reported latency after prepare: 120 samples at 48 kHz
+PASS VST3 parameter automation and state bridge (35 parameters)
+PASS VST3 mono/stereo, six sample rates, irregular 1..2053 sample blocks within declared host maximum (432 callbacks)
+PASS independent second VST3 instance and state restoration

@@ -1,0 +1,17 @@
+GUMMY processor integration tests
+PASS allocation instrumentation detects an allocation
+PASS neutral unity, mono/stereo, six sample rates, irregular and oversized blocks
+PASS aligned dry, master bypass, host bypass, fixed latency at all quality modes
+PASS rapid automation, quality changes, bypass toggles, sample-rate reprepare; no callback allocations
+PASS click-free master bypass transitions converge to aligned dry unity
+PASS silence, extreme/non-finite input and finite meters
+PASS hard/soft sample-peak ceiling at Off/2x/4x
+INFO hard clip alias at 18 kHz, 10 kHz sine / 48 kHz / +18 dB drive: Off -9.9559 dBc, 2x -21.9372 dBc, 4x -21.0503 dBc
+PASS production clipping-stage alias measurement at Off/2x/4x
+PASS ten distinct factory presets, modified names, DAW state and user preset round-trip
+PASS A/B snapshots and multiple-instance isolation
+INFO stereo 48 kHz / 128 / 4x: 18.6466% of one core (includes signal generation and output checks; environment-dependent)
+PASS full-chain CPU observation
+PASS editor lifecycle, resizing, rendering, all control attachments, and concurrent audio
+12 passed, 0 failed; 7424 process callbacks checked, 0 counted C++ audio-thread allocations
+NOTE allocation instrumentation covers C++ new/new[] on the calling thread; it does not intercept direct malloc or prove absence of locks/file I/O.

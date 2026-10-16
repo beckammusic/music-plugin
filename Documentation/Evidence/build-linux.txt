@@ -1,0 +1,132 @@
+-- Checking for modules 'webkit2gtk-4.0;gtk+-x11-3.0'
+--   Package 'webkit2gtk-4.0', required by 'virtual:world', not found
+--   Package 'gtk+-x11-3.0', required by 'virtual:world', not found
+-- Configuring juceaide
+-- Building juceaide
+-- Exporting juceaide
+-- Testing juceaide
+-- Finished setting up juceaide
+-- Configuring done (1.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/work/build-linux
+[0/2] Re-checking globbed directories...
+[1/16] Building CXX object CMakeFiles/GUMMY.dir/Source/Parameters/Parameters.cpp.o
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp: In member function ‘gummy::Settings gummy::ParameterReader::read() const’:
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:72:79: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   72 | #define READ(field) s.field = static_cast<decltype(s.field)>(values[i++]->load(std::memory_order_relaxed));
+      |                                                              ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:74:32: note: in expansion of macro ‘READ’
+   74 |         READ(output) READ(mix) READ(bypass) READ(quality) READ(transientOn) READ(attack) READ(sustain)
+      |                                ^~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:72:79: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   72 | #define READ(field) s.field = static_cast<decltype(s.field)>(values[i++]->load(std::memory_order_relaxed));
+      |                                                              ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:74:59: note: in expansion of macro ‘READ’
+   74 |         READ(output) READ(mix) READ(bypass) READ(quality) READ(transientOn) READ(attack) READ(sustain)
+      |                                                           ^~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:72:79: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   72 | #define READ(field) s.field = static_cast<decltype(s.field)>(values[i++]->load(std::memory_order_relaxed));
+      |                                                              ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:75:13: note: in expansion of macro ‘READ’
+   75 |             READ(compOn) READ(threshold) READ(ratio) READ(compAttack) READ(release) READ(makeup)
+      |             ^~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:72:79: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   72 | #define READ(field) s.field = static_cast<decltype(s.field)>(values[i++]->load(std::memory_order_relaxed));
+      |                                                              ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:76:17: note: in expansion of macro ‘READ’
+   76 |                 READ(autoRelease) READ(compMix) READ(compType) READ(colorOn) READ(colorDrive) READ(colorMix)
+      |                 ^~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:72:79: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   72 | #define READ(field) s.field = static_cast<decltype(s.field)>(values[i++]->load(std::memory_order_relaxed));
+      |                                                              ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:76:64: note: in expansion of macro ‘READ’
+   76 |                 READ(autoRelease) READ(compMix) READ(compType) READ(colorOn) READ(colorDrive) READ(colorMix)
+      |                                                                ^~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:72:79: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   72 | #define READ(field) s.field = static_cast<decltype(s.field)>(values[i++]->load(std::memory_order_relaxed));
+      |                                                              ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:77:37: note: in expansion of macro ‘READ’
+   77 |                     READ(colorType) READ(toneOn) READ(body) READ(presence) READ(air) READ(smoothOn)
+      |                                     ^~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:72:79: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   72 | #define READ(field) s.field = static_cast<decltype(s.field)>(values[i++]->load(std::memory_order_relaxed));
+      |                                                              ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:77:86: note: in expansion of macro ‘READ’
+   77 |                     READ(colorType) READ(toneOn) READ(body) READ(presence) READ(air) READ(smoothOn)
+      |                                                                                      ^~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:72:79: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   72 | #define READ(field) s.field = static_cast<decltype(s.field)>(values[i++]->load(std::memory_order_relaxed));
+      |                                                              ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:78:38: note: in expansion of macro ‘READ’
+   78 |                         READ(smooth) READ(motionOn) READ(motionAmount) READ(motionType) READ(clipOn)
+      |                                      ^~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:72:79: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   72 | #define READ(field) s.field = static_cast<decltype(s.field)>(values[i++]->load(std::memory_order_relaxed));
+      |                                                              ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/work/GUMMY/Source/Parameters/Parameters.cpp:78:89: note: in expansion of macro ‘READ’
+   78 |                         READ(smooth) READ(motionOn) READ(motionAmount) READ(motionType) READ(clipOn)
+      |                                                                                         ^~~~
+[2/16] Building CXX object CMakeFiles/GUMMY.dir/Source/PluginProcessor.cpp.o
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:3,
+                 from /workspace/work/GUMMY/Source/PluginProcessor.h:2,
+                 from /workspace/work/GUMMY/Source/PluginProcessor.cpp:1:
+/workspace/work/GUMMY/Source/DSP/Modulation.h: In member function ‘void gummy::Modulation::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/Modulation.h:51:15: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   51 |         if (a == 0) { left = dryL; right = dryR; }
+      |             ~~^~~~
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:6:
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h: In member function ‘void gummy::ResonanceSuppressor::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h:63:23: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   63 |         if (requested == 0.0f) {
+      |             ~~~~~~~~~~^~~~~~~
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h:76:49: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   76 |             const float coefficient = requested == 0.0f || band.target > band.cut ? cutAttack_ : cutRelease_;
+      |                                       ~~~~~~~~~~^~~~~~~
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:7:
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h: In member function ‘void gummy::TransientShaper::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h:47:20: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   47 |         if (attack == 0.0f && sustain == 0.0f)
+      |             ~~~~~~~^~~~~~~
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h:47:39: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   47 |         if (attack == 0.0f && sustain == 0.0f)
+      |                               ~~~~~~~~^~~~~~~
+[3/16] Building CXX object CMakeFiles/GUMMY.dir/Source/PluginEditor.cpp.o
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:3,
+                 from /workspace/work/GUMMY/Source/PluginProcessor.h:2,
+                 from /workspace/work/GUMMY/Source/PluginEditor.cpp:1:
+/workspace/work/GUMMY/Source/DSP/Modulation.h: In member function ‘void gummy::Modulation::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/Modulation.h:51:15: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   51 |         if (a == 0) { left = dryL; right = dryR; }
+      |             ~~^~~~
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:6:
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h: In member function ‘void gummy::ResonanceSuppressor::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h:63:23: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   63 |         if (requested == 0.0f) {
+      |             ~~~~~~~~~~^~~~~~~
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h:76:49: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   76 |             const float coefficient = requested == 0.0f || band.target > band.cut ? cutAttack_ : cutRelease_;
+      |                                       ~~~~~~~~~~^~~~~~~
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:7:
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h: In member function ‘void gummy::TransientShaper::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h:47:20: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   47 |         if (attack == 0.0f && sustain == 0.0f)
+      |             ~~~~~~~^~~~~~~
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h:47:39: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   47 |         if (attack == 0.0f && sustain == 0.0f)
+      |                               ~~~~~~~~^~~~~~~
+[4/16] Building CXX object CMakeFiles/GUMMY.dir/Source/Presets/FactoryPresets.cpp.o
+[5/16] Linking CXX static library GUMMY_artefacts/Release/libGUMMY_SharedCode.a
+[6/16] Building CXX object CMakeFiles/GummyDSPTests.dir/Tests/DSPTests.cpp.o
+[7/16] Linking CXX shared module GUMMY_artefacts/Release/VST3/GUMMY.vst3/Contents/x86_64-linux/GUMMY.so
+removing moduleinfo.json
+creating /workspace/work/build-linux/GUMMY_artefacts/Release/VST3/GUMMY.vst3/Contents/Resources/moduleinfo.json
+[8/16] Building CXX object CMakeFiles/GummyDSPTests.dir/Tests/DynamicsTests.cpp.o
+[9/16] Building CXX object CMakeFiles/GummyDSPTests.dir/Tests/AdvancedTests.cpp.o
+[10/16] Linking CXX executable GUMMY_artefacts/Release/Standalone/GUMMY
+[11/16] Linking CXX executable GummyDSPTests
+[12/16] Building CXX object CMakeFiles/GummyFormatTests.dir/Tests/PluginFormatTests.cpp.o
+[13/16] Linking CXX executable GummyFormatTests_artefacts/Release/GummyFormatTests
+[14/16] Building CXX object CMakeFiles/GummyPluginTests.dir/Tests/PluginTests.cpp.o
+<command-line>: warning: "JUCE_STANDALONE_APPLICATION" redefined
+<command-line>: note: this is the location of the previous definition
+[15/16] Linking CXX executable GummyPluginTests_artefacts/Release/GummyPluginTests

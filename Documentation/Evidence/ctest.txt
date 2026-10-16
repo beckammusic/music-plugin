@@ -1,0 +1,13 @@
+Test project /workspace/work/build-linux
+    Start 1: DSP
+1/4 Test #1: DSP ..............................   Passed    1.28 sec
+    Start 2: MacScriptContracts
+2/4 Test #2: MacScriptContracts ...............   Passed   11.36 sec
+    Start 3: PluginIntegration
+3/4 Test #3: PluginIntegration ................   Passed    3.94 sec
+    Start 4: VST3BinaryIntegration
+4/4 Test #4: VST3BinaryIntegration ............   Passed    0.42 sec
+
+100% tests passed out of 4
+
+Total Test time (real) =  17.00 sec

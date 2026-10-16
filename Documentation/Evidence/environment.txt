@@ -1,0 +1,18 @@
+Development host: Linux x86_64. Apple Xcode/SDK, auval and Logic Pro unavailable.
+
+$ uname -srm
+Linux 6.18.44 x86_64
+
+$ g++ --version
+g++ (Debian 14.2.0-19) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+$ /workspace/work/deps/python/cmake/data/bin/cmake --version
+cmake version 4.4.4
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+
+$ git -C /workspace/work/deps/JUCE rev-parse HEAD
+51a8a6d7aeae7326956d747737ccf1575e61e209

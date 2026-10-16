@@ -1,0 +1,130 @@
+-- Checking for modules 'webkit2gtk-4.0;gtk+-x11-3.0'
+--   Package 'webkit2gtk-4.0', required by 'virtual:world', not found
+--   Package 'gtk+-x11-3.0', required by 'virtual:world', not found
+-- Configuring juceaide
+-- Building juceaide
+-- Exporting juceaide
+-- Testing juceaide
+-- Finished setting up juceaide
+-- Configuring done (1.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/work/build-linux
+[0/2] Re-checking globbed directories...
+[1/51] Building CXX object CMakeFiles/GUMMY.dir/Source/PluginProcessor.cpp.o
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:2,
+                 from /workspace/work/GUMMY/Source/PluginProcessor.h:4,
+                 from /workspace/work/GUMMY/Source/PluginProcessor.cpp:1:
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h: In member function ‘void gummy::TransientShaper::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h:47:20: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   47 |         if (attack == 0.0f && sustain == 0.0f)
+      |             ~~~~~~~^~~~~~~
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h:47:39: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   47 |         if (attack == 0.0f && sustain == 0.0f)
+      |                               ~~~~~~~~^~~~~~~
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:5:
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h: In member function ‘void gummy::ResonanceSuppressor::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h:63:23: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   63 |         if (requested == 0.0f) {
+      |             ~~~~~~~~~~^~~~~~~
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h:76:49: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   76 |             const float coefficient = requested == 0.0f || band.target > band.cut ? cutAttack_ : cutRelease_;
+      |                                       ~~~~~~~~~~^~~~~~~
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:6:
+/workspace/work/GUMMY/Source/DSP/Modulation.h: In member function ‘void gummy::Modulation::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/Modulation.h:51:15: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   51 |         if (a == 0) { left = dryL; right = dryR; }
+      |             ~~^~~~
+[2/51] Building CXX object CMakeFiles/GUMMY.dir/Source/PluginEditor.cpp.o
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:2,
+                 from /workspace/work/GUMMY/Source/PluginProcessor.h:4,
+                 from /workspace/work/GUMMY/Source/PluginEditor.cpp:1:
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h: In member function ‘void gummy::TransientShaper::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h:47:20: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   47 |         if (attack == 0.0f && sustain == 0.0f)
+      |             ~~~~~~~^~~~~~~
+/workspace/work/GUMMY/Source/DSP/TransientShaper.h:47:39: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   47 |         if (attack == 0.0f && sustain == 0.0f)
+      |                               ~~~~~~~~^~~~~~~
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:5:
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h: In member function ‘void gummy::ResonanceSuppressor::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h:63:23: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   63 |         if (requested == 0.0f) {
+      |             ~~~~~~~~~~^~~~~~~
+/workspace/work/GUMMY/Source/DSP/ResonanceSuppressor.h:76:49: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   76 |             const float coefficient = requested == 0.0f || band.target > band.cut ? cutAttack_ : cutRelease_;
+      |                                       ~~~~~~~~~~^~~~~~~
+In file included from /workspace/work/GUMMY/Source/DSP/Engine.h:6:
+/workspace/work/GUMMY/Source/DSP/Modulation.h: In member function ‘void gummy::Modulation::process(float&, float&, const gummy::Settings&)’:
+/workspace/work/GUMMY/Source/DSP/Modulation.h:51:15: warning: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Wfloat-equal]
+   51 |         if (a == 0) { left = dryL; right = dryR; }
+      |             ~~^~~~
+/workspace/work/GUMMY/Source/PluginEditor.cpp: In constructor ‘GummyAudioProcessorEditor::GummyAudioProcessorEditor(GummyAudioProcessor&)’:
+/workspace/work/GUMMY/Source/PluginEditor.cpp:114:15: warning: declaration of ‘constrainer’ shadows a member of ‘GummyAudioProcessorEditor’ [-Wshadow]
+  114 |     if (auto* constrainer = getConstrainer()) constrainer->setFixedAspectRatio (1100.0 / 720.0);
+      |               ^~~~~~~~~~~
+In file included from /workspace/work/deps/JUCE/modules/juce_audio_processors/juce_audio_processors.h:151,
+                 from /workspace/work/GUMMY/Source/PluginProcessor.h:2:
+/workspace/work/deps/JUCE/modules/juce_audio_processors/processors/juce_AudioProcessorEditor.h:265:33: note: shadowed declaration is here
+  265 |     ComponentBoundsConstrainer* constrainer = nullptr;
+      |                                 ^~~~~~~~~~~
+/workspace/work/GUMMY/Source/PluginEditor.cpp: In member function ‘void GummyAudioProcessorEditor::choosePresetFile(bool)’:
+/workspace/work/GUMMY/Source/PluginEditor.cpp:279:16: warning: declaration of ‘flags’ shadows a member of ‘GummyAudioProcessorEditor’ [-Wshadow]
+  279 |     const auto flags = saving ? juce::FileBrowserComponent::saveMode | juce::FileBrowserComponent::canSelectFiles
+      |                ^~~~~
+In file included from /workspace/work/deps/JUCE/modules/juce_gui_basics/juce_gui_basics.h:205,
+                 from /workspace/work/deps/JUCE/modules/juce_audio_processors/juce_audio_processors.h:66:
+/workspace/work/deps/JUCE/modules/juce_gui_basics/components/juce_Component.h:2689:24: note: shadowed declaration is here
+ 2689 |         ComponentFlags flags;
+      |                        ^~~~~
+[3/51] Building CXX object CMakeFiles/GUMMY.dir/workspace/work/deps/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o
+[4/51] Building CXX object CMakeFiles/GUMMY.dir/workspace/work/deps/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o
+[5/51] Building CXX object CMakeFiles/GUMMY.dir/workspace/work/deps/JUCE/modules/juce_core/juce_core.cpp.o
+[6/51] Building CXX object CMakeFiles/GUMMY.dir/workspace/work/deps/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp.o
+[7/51] Building CXX object CMakeFiles/GUMMY.dir/workspace/work/deps/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o
+[8/51] Building CXX object CMakeFiles/GUMMY.dir/workspace/work/deps/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o
+[9/51] Linking CXX executable juce_vst3_helper
+[10/51] Building CXX object CMakeFiles/GUMMY_VST3.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.cpp.o
+[11/51] Building CXX object CMakeFiles/GUMMY_VST3.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
+[12/51] Building CXX object CMakeFiles/GUMMY_VST3.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
+[13/51] Building CXX object CMakeFiles/GUMMY_VST3.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.cpp.o
+[14/51] Building CXX object CMakeFiles/GUMMY_VST3.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
+[15/51] Building CXX object CMakeFiles/GUMMY_VST3.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
+[16/51] Building CXX object CMakeFiles/GUMMY_VST3.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp.o
+[17/51] Building CXX object CMakeFiles/GUMMY.dir/workspace/work/deps/JUCE/modules/juce_dsp/juce_dsp.cpp.o
+[18/51] Building CXX object CMakeFiles/GUMMY_Standalone.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.cpp.o
+[19/51] Building CXX object CMakeFiles/GUMMY_Standalone.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
+[20/51] Building CXX object CMakeFiles/GUMMY_Standalone.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
+[21/51] Building CXX object CMakeFiles/GUMMY_Standalone.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.cpp.o
+[22/51] Building CXX object CMakeFiles/GUMMY_Standalone.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
+[23/51] Building CXX object CMakeFiles/GUMMY_Standalone.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
+[24/51] Building CXX object CMakeFiles/GUMMY_Standalone.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp.o
+[25/51] Building CXX object CMakeFiles/GUMMY_Standalone.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
+[26/51] Building CXX object CMakeFiles/GummyDSPTests.dir/Tests/DynamicsTests.cpp.o
+[27/51] Building CXX object CMakeFiles/GummyDSPTests.dir/Tests/AdvancedTests.cpp.o
+[28/51] Building CXX object CMakeFiles/GummyPluginTests.dir/Tests/PluginTests.cpp.o
+<command-line>: warning: "JUCE_STANDALONE_APPLICATION" redefined
+<command-line>: note: this is the location of the previous definition
+[29/51] Building CXX object CMakeFiles/GUMMY_VST3.dir/workspace/work/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
+[30/51] Building CXX object CMakeFiles/GummyFormatTests.dir/Tests/PluginFormatTests.cpp.o
+[31/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_audio_processors/juce_audio_processors_ara.cpp.o
+[32/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_audio_processors/juce_audio_processors_lv2_libs.cpp.o
+[33/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp.o
+[34/51] Building CXX object CMakeFiles/GUMMY.dir/workspace/work/deps/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o
+[35/51] Linking CXX static library GUMMY_artefacts/Release/libGUMMY_SharedCode.a
+[36/51] Linking CXX shared module GUMMY_artefacts/Release/VST3/GUMMY.vst3/Contents/x86_64-linux/GUMMY.so
+removing moduleinfo.json
+creating /workspace/work/build-linux/GUMMY_artefacts/Release/VST3/GUMMY.vst3/Contents/Resources/moduleinfo.json
+[37/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp.o
+[38/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_graphics/juce_graphics.cpp.o
+[39/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
+[40/51] Building C object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
+[41/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_events/juce_events.cpp.o
+[42/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_core/juce_core_CompilationTime.cpp.o
+[43/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_data_structures/juce_data_structures.cpp.o
+[44/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_gui_basics/juce_gui_basics.cpp.o
+[45/51] Linking CXX executable GUMMY_artefacts/Release/Standalone/GUMMY
+[46/51] Linking CXX executable GummyDSPTests
+[47/51] Linking CXX executable GummyPluginTests_artefacts/Release/GummyPluginTests
+[48/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp.o
+[49/51] Building CXX object CMakeFiles/GummyFormatTests.dir/workspace/work/deps/JUCE/modules/juce_core/juce_core.cpp.o
+[50/51] Linking CXX executable GummyFormatTests_artefacts/Release/GummyFormatTests

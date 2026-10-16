@@ -1,0 +1,88 @@
+name: Build macOS plugin
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Universal AU and VST3
+    runs-on: macos-14
+    timeout-minutes: 60
+    env:
+      MACOSX_DEPLOYMENT_TARGET: '11.0'
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out GUMMY
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Check out pinned JUCE 8.0.6
+        uses: actions/checkout@v4
+        with:
+          repository: juce-framework/JUCE
+          ref: 51a8a6d7aeae7326956d747737ccf1575e61e209
+          path: External/JUCE
+          persist-credentials: false
+
+      - name: Record runner tools
+        run: |
+          mkdir -p work/ci-logs
+          {
+            sw_vers
+            uname -m
+            xcodebuild -version
+            cmake --version
+            python3 --version
+          } | tee work/ci-logs/runner.txt
+
+      - name: Build universal plugins and run CTest
+        run: |
+          bash Scripts/build_mac.sh --juce "$GITHUB_WORKSPACE/External/JUCE" --arch universal --jobs 3 \
+            2>&1 | tee work/ci-logs/build-macos.txt
+
+      - name: Exercise and capture the native editor
+        run: |
+          build-mac/GummyPluginTests_artefacts/Release/GummyPluginTests --gui \
+            --screenshot "$GITHUB_WORKSPACE/work/ci-logs/GUMMY-editor.png" \
+            2>&1 | tee work/ci-logs/editor-macos.txt
+
+      - name: Check both CPU architectures
+        run: |
+          for bundle in AU/GUMMY.component VST3/GUMMY.vst3 Standalone/GUMMY.app; do
+            lipo -verify_arch arm64 x86_64 "build-mac/GUMMY_artefacts/Release/$bundle/Contents/MacOS/GUMMY"
+          done
+
+      - name: Install and validate the Audio Unit on the runner
+        run: |
+          bash Scripts/install_mac.sh 2>&1 | tee work/ci-logs/install-macos.txt
+          bash Scripts/validate_au.sh 2>&1 | tee work/ci-logs/auval-macos.txt
+
+      - name: Package the Mac download
+        run: bash Scripts/package_mac.sh
+
+      - name: Upload installable package
+        uses: actions/upload-artifact@v4
+        with:
+          name: GUMMY-macOS
+          path: |
+            dist/GUMMY-macOS.zip
+            dist/GUMMY-macOS.zip.sha256
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload build and validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: GUMMY-macOS-logs
+          path: |
+            work/ci-logs/
+            build-mac/Testing/Temporary/
+          if-no-files-found: ignore
+          retention-days: 30
