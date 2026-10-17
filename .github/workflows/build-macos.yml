@@ -61,6 +61,13 @@ jobs:
       - name: Install and validate the Audio Unit on the runner
         run: |
           bash Scripts/install_mac.sh 2>&1 | tee work/ci-logs/install-macos.txt
+          # Refresh only this disposable runner user's registrar after installation.
+          # A missing process is normal; validate_au.sh still requires discovery/auval.
+          if killall -u "$(id -un)" AudioComponentRegistrar; then
+            echo "Refreshed the runner's Audio Unit registrar."
+          else
+            echo "No running user registrar to refresh; waiting for AU discovery."
+          fi
           bash Scripts/validate_au.sh 2>&1 | tee work/ci-logs/auval-macos.txt
 
       - name: Package the Mac download
