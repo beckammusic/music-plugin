@@ -68,9 +68,17 @@ else:
         self.mock("shasum", "import hashlib; print(hashlib.sha256(pathlib.Path(sys.argv[-1]).read_bytes()).hexdigest() + '  ' + sys.argv[-1])")
         self.mock("codesign", "sys.exit(int(os.environ.get('GUMMY_TEST_SIGN_EXIT', '0')))")
         self.mock("ctest", "sys.exit(int(os.environ.get('GUMMY_TEST_CTEST_EXIT', '0')))")
+        self.mock("sleep", "pass")
         self.mock("auval", """
 if sys.argv[1:] == ['-a']:
-    print(os.environ.get('GUMMY_TEST_AU_LIST', 'aufx Gmmy GmAu - GUMMY Audio: GUMMY'))
+    enumeration_exit = int(os.environ.get('GUMMY_TEST_AU_ENUM_EXIT', '0'))
+    if enumeration_exit: sys.exit(enumeration_exit)
+    with open(os.environ['GUMMY_TEST_LOG']) as f:
+        attempts = sum(json.loads(line) == ['auval', '-a'] for line in f)
+    if attempts <= int(os.environ.get('GUMMY_TEST_DISCOVERY_DELAY', '0')):
+        print('aufx othr Manu - Other Product')
+    else:
+        print(os.environ.get('GUMMY_TEST_AU_LIST', 'aufx Gmmy GmAu - GUMMY Audio: GUMMY'))
 else:
     sys.exit(int(os.environ.get('GUMMY_TEST_AUVAL_EXIT', '0')))
 """)
@@ -237,12 +245,43 @@ if '--build' in sys.argv:
         self.env["GUMMY_TEST_AU_LIST"] = "aufx othr Manu - Other Product"
         undiscovered = self.run_script("validate_au.sh")
         self.assertNotEqual(undiscovered.returncode, 0)
-        self.assertEqual(self.commands("auval"), [["auval", "-a"]])
+        self.assertEqual(self.commands("auval"), [["auval", "-a"]] * 15)
+        self.assertEqual(len(self.commands("sleep")), 14)
+        self.assertIn("Other Product", undiscovered.stderr)
+        self.assertNotIn("validation passed", undiscovered.stdout)
         self.env.pop("GUMMY_TEST_AU_LIST")
         self.env["GUMMY_TEST_AUVAL_EXIT"] = "1"
         failed = self.run_script("validate_au.sh")
         self.assertNotEqual(failed.returncode, 0)
         self.assertIn("Audio Unit validation failed", failed.stderr)
+
+    def test_delayed_registration_is_retried_before_actual_validation(self):
+        self.bundle(self.installed_paths()[0], "AU")
+        self.env["GUMMY_TEST_DISCOVERY_DELAY"] = "2"
+        result = self.run_script("validate_au.sh")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(self.commands("auval"), [["auval", "-a"]] * 3 +
+                         [["auval", "-v", "aufx", "Gmmy", "GmAu"]])
+        self.assertEqual(self.commands("sleep"), [["sleep", "2"]] * 2)
+        self.assertIn("Audio Unit discovery and auval validation passed", result.stdout)
+
+    def test_registration_on_last_attempt_still_runs_real_validation(self):
+        self.bundle(self.installed_paths()[0], "AU")
+        self.env["GUMMY_TEST_DISCOVERY_DELAY"] = "14"
+        result = self.run_script("validate_au.sh")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(self.commands("auval"), [["auval", "-a"]] * 15 +
+                         [["auval", "-v", "aufx", "Gmmy", "GmAu"]])
+        self.assertEqual(len(self.commands("sleep")), 14)
+
+    def test_registry_enumeration_error_is_not_hidden_by_retries(self):
+        self.bundle(self.installed_paths()[0], "AU")
+        self.env["GUMMY_TEST_AU_ENUM_EXIT"] = "13"
+        result = self.run_script("validate_au.sh")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("auval could not enumerate", result.stderr)
+        self.assertEqual(self.commands("auval"), [["auval", "-a"]])
+        self.assertEqual(self.commands("sleep"), [])
 
     def test_build_failure_is_propagated_and_universal_architecture_is_forwarded(self):
         juce = self.root / "JUCE"
