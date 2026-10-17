@@ -30,11 +30,24 @@ for code in "$component_type" "$component_subtype" "$component_manufacturer"; do
     [ "${#code}" -eq 4 ] || gummy_fail "Invalid four-character AU code in metadata: '$code'"
 done
 printf 'Bundle: %s\nMetadata identifiers: %s %s %s\n' "$bundle" "$component_type" "$component_subtype" "$component_manufacturer"
-listing="$(auval -a)" || gummy_fail 'auval could not enumerate Audio Units.'
-if ! printf '%s\n' "$listing" | awk -v t="$component_type" -v s="$component_subtype" -v m="$component_manufacturer" \
-    '$1 == t && $2 == s && $3 == m { print; found = 1 } END { exit !found }'; then
-    gummy_fail 'GUMMY is not discoverable by the Audio Unit registry. Install the AU, restart the audio host (or log out/in), then retry. See Documentation/LOGIC_INSTALL.md.'
-fi
+# Registration is asynchronous after a newly copied AU. Keep discovery and
+# actual validation mandatory, but allow the user registrar time to rescan.
+discovery_attempt=1
+discovery_limit=15
+while :; do
+    listing="$(auval -a)" || gummy_fail 'auval could not enumerate Audio Units.'
+    if printf '%s\n' "$listing" | awk -v t="$component_type" -v s="$component_subtype" -v m="$component_manufacturer" \
+        '$1 == t && $2 == s && $3 == m { print; found = 1 } END { exit !found }'; then
+        break
+    fi
+    if [ "$discovery_attempt" -ge "$discovery_limit" ]; then
+        printf 'Last Audio Unit registry listing:\n%s\n' "${listing:-<empty>}" >&2
+        gummy_fail 'GUMMY is still not discoverable after waiting for registration. Restart the audio host (or log out/in), then retry. See Documentation/LOGIC_INSTALL.md.'
+    fi
+    printf 'Waiting for GUMMY Audio Unit registration (%s/%s)...\n' "$discovery_attempt" "$discovery_limit"
+    sleep 2
+    discovery_attempt=$((discovery_attempt + 1))
+done
 auval -v "$component_type" "$component_subtype" "$component_manufacturer" || gummy_fail 'Audio Unit validation failed. Save the auval output and investigate before using this build.'
 printf 'Audio Unit discovery and auval validation passed.\n'
 if [ -z "$pluginval_path" ]; then pluginval_path="$(command -v pluginval || true)"; fi
