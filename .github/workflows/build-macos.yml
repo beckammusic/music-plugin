@@ -55,7 +55,7 @@ jobs:
       - name: Check both CPU architectures
         run: |
           for bundle in AU/GUMMY.component VST3/GUMMY.vst3 Standalone/GUMMY.app; do
-            lipo -verify_arch arm64 x86_64 "build-mac/GUMMY_artefacts/Release/$bundle/Contents/MacOS/GUMMY"
+            lipo "build-mac/GUMMY_artefacts/Release/$bundle/Contents/MacOS/GUMMY" -verify_arch arm64 x86_64
           done
 
       - name: Install and validate the Audio Unit on the runner
